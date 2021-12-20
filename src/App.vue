@@ -1,11 +1,12 @@
 <template>
   <div>
     <component v-if="component" :is="component"></component>
+    <button @click="load">加载组件</button>
   </div>
 </template>
 
 <script setup>
-import { ref, markRaw, shallowRef } from 'vue'
+import { shallowRef } from 'vue'
 import axios from 'axios'
 
 const component = shallowRef('')
@@ -25,7 +26,6 @@ const getComponent = async (resUrl) => {
       module.exports,
       require
     )
-    console.log(module)
     component.value = module.exports.default
 
     // let comp = new Function(`return ${res.data}`)()
@@ -35,7 +35,10 @@ const getComponent = async (resUrl) => {
     console.log(e)
   }
 }
-getComponent('/packages/todo.js')
+
+const load = () => {
+  getComponent('/packages/todo.js')
+}
 </script>
 
 <style>
