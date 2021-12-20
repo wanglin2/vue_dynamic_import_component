@@ -37,7 +37,7 @@ const getComponent = async (resUrl) => {
 }
 
 const load = () => {
-  getComponent('/packages/todo.js')
+  getComponent(process.env.NODE_ENV !== 'production' ? '/packages/todo.js' : './dist/packages/todo.js')
 }
 </script>
 
