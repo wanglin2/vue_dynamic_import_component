@@ -1,0 +1,2 @@
+# vue_dynamic_import_component
+vue动态引入组件demo
